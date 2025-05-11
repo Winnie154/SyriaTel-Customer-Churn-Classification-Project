@@ -1,4 +1,8 @@
 # SyriaTel-Customer-Churn-Classification-Project
+![image](https://github.com/user-attachments/assets/5a9c6449-3dbb-463f-b9dd-adb1fc53269e)
+
+
+
 
 ## Predicting-Customer-Churn-at-SyriaTel-A-Strategic-Analysis-to-Improve-Retention
 This project predicts customer churn at SyriaTel, a telecommunications company, using data science and machine learning. It analyzes historical data to identify churn patterns, helping SyriaTel improve retention, reduce revenue loss, and make informed decisions through a binary classification model.
@@ -29,114 +33,38 @@ This dataset was obtained from [kaggle](https://www.kaggle.com/datasets/becksddf
 
 The cleaning of this dataset entailed dealing with outliers, dealing with duplicates, checking for missing values which the dataset didn't have, harmonizing the various data types and also operating both dummy encoding and label encoding in preparation of the data for modeling.
 
-## Data Visualization and Analysis
+## Data Visualization and Analysis Objectives
 
-**1. To Identify Churn Rates by Region and which region is highly affected.**
-
-![Churns by Region](https://github.com/user-attachments/assets/8eb75eea-5dae-4896-9df4-a877640753e8)
-
-**Interpretation**
-
-- Area Code 408, presents to have the highest Churn Rate followed by 510 then 415.
+1. To Identify Churn Rates by Region and which region is highly affected.
   
-**2. To examine the impact of Account Length on Churn. Which customers are highly prone to attrition.**
+2. To examine the impact of Account Length on Churn. Which customers are highly prone to attrition.
 
-![Churns by account length](https://github.com/user-attachments/assets/0d8527ec-e438-47bc-ba75-ff11b7b9274d)
+3. To assess the influence of subscription plans (voicemail and international plans) on churn.
 
-**Interpretation**
+4. To evaluate the impact of customer service calls on churn and determine if there is a statistically significant relationship.
 
-- The analysis shows that long-term customers (over 14 years) have the highest churn rate, followed by short-term customers (7 years or less) with the second-highest churn rate, while mid-term customers (7-14 years) exhibit the lowest churn rate.
+5. To predict churn by focusing on the most influential features that drive customer behavior and retention patterns.
+   
 
-**3. To assess the influence of subscription plans (voicemail and international plans) on churn.**
+Achieving these objectives involved training four distinct models: basic logistic regression and decision tree models, along with enhanced versions of both. The second models incorporated feature selection, addressed class imbalance using class weights, applied regularization (for logistic regression), and employed hyperparameter tuning (adjusting max depth, min samples, and entropy) for the decision tree models.
 
-![Churns by subscription plans](https://github.com/user-attachments/assets/90fc3ced-27a3-4e25-844f-30ccf1bd0547)
-
-**Interpretation**
-
-- Customers with an International Plan but no Voicemail Plan have the highest churn rate, followed by those with both plans, while customers without either plan have the third-highest churn rate, and those with only a Voicemail Plan have the lowest churn rate.
-
-**4. To evaluate the impact of customer service calls on churn and determine if there is a statistically significant relationship.**
-
-![Churns by customer service](https://github.com/user-attachments/assets/b36800b4-464d-4618-848f-8e8a956c40ca)
-
-**Interpretation**
-- Both customers who churn (True) and those who don't churn (False) seem to have a relatively high number of customer service calls, with values around 0.7.
-
-- In terms of hypothesis, the P-values for both T-test and Mann-Whitney tests presented to be >than 0.05. So, we failed to reject the null hypothesis with a conclusion that there is no statistically significant relationship between customer service calls and churn rate. In other words, the frequency of customer service calls does not have a significant impact on whether a customer churns or not. This implied that customer service is not a major factor influencing customer churn.
-
-**5. To predict churn by focusing on the most influential features that drive customer behavior and retention patterns.**
-
-Achieving this objective involved training four distinct models: basic logistic regression and decision tree models, along with enhanced versions of both. The second models incorporated feature selection, addressed class imbalance using class weights, applied regularization (for logistic regression), and employed hyperparameter tuning (adjusting max depth, min samples, and entropy) for the decision tree models.
-
-Logistic regression and decision tree models were chosen as they are well-suited for analyzing the categorical nature of the target variable (churn).
+Logistic regression and decision tree models were chosen as they were well-suited for analyzing the categorical nature of the target variable (churn).
 
 These models were analysed further using four different metrics entailing, cross validation score, confusion matrix, ROC Curve and classification Report. 
+
+ ![image](https://github.com/user-attachments/assets/c92784b5-9f3f-4e71-8886-e1d7d47eba64)
+
+ ![image](https://github.com/user-attachments/assets/06aff32d-b238-4dce-8b29-0ca9bba2b824)
+
+ ![image](https://github.com/user-attachments/assets/601589a3-4f7f-46f9-9986-74ce781b489b)
+
+
 
 - Based on validation score, the second logistic model presentred to have the highest score.
 - Based on ROC-Curve, the Logistic Second Model,emerged as the best-performing model, achieving the highest TPR and lowest FPR, indicating effective optimization for churn prediction.
 - Based on confusion matrix, the second logistic model recorded the highest number of true positives, outperforming others in correctly predicting churns. However, it also recorded more false positives, indicating a tendency to overpredict churn.
 - Based on Classification report the emphasis was on recall, which tells how well is our model's ability in predicting churn. In this case as well, The second logistic model presented to have the highest recall compared to the rest.
 
-Each of these metrics are further emphasized below.
-
-**a).Cross Validation Score**
-
-![image](https://github.com/user-attachments/assets/42e7de7d-3832-46fa-bb0d-9863dce94d19)
-
-According to this metric, the Second Logistic Model has the highest validation score based on recall, as the primary focus is to identify as many churners as possible. This model outperforms the others by identifying a significantly higher proportion of churners.
-
-**b).Confusion Matrix**
-
-![Confusion matrix](https://github.com/user-attachments/assets/f20cef90-c55c-47a8-acf6-881a509ab7fb)
-
-**Interpretation**
-
-Logistic Regression Models:
-
--The second logistic model has a higher number of True Positives (78) but also a higher False Positive rate (150). This indicates that it may incorrectly classify a higher number of non-churn customers as churn, which could be problematic, depending on the cost of false positives. The first logistic model has fewer false positives and false negatives, but its True Positives (39) are lower, which suggests it may be under-predicting churn.
-
-Decision Tree Models:
-
--Both decision tree models (baseline and second model) perform similarly, with a relatively higher True Positive (60) rate and fewer False Positives compared to logistic regression. The decision tree models seem to strike a better balance between identifying churn customers correctly and avoiding false positives.
-
-**c).Classification Report**
-- For Logistic Regression:
-  
-![image](https://github.com/user-attachments/assets/ff6718a5-882c-4b57-ab55-b4526e686ef8)
-
-- For Decision Tree:
-  
-![image](https://github.com/user-attachments/assets/638e09f5-d28d-4cf8-b3a8-b1497e236e47)
-
-According to this metric, this is how the models perform,
-
-- Logistic Baseline Model performs well for non-churn customers(high recall and precision for class 0)but has difficulty identifying churn.This suggests a high number of false negatives (failing to predict churn).
-
-- Logistic Second Model improves churn prediction compared to the baseline model but at the cost of misclassifying more non-churn customers as churn (lower recall for class 0).
-
-- Decision Tree Models (both baseline and second) perform well for non-churn customers, but their performance in detecting churn is still not optimal, with relatively low recall for churn.
-
-**b).ROC Curve**
-
-![ROC Curve](https://github.com/user-attachments/assets/5bdd7be6-e2ee-4a97-8425-9e1e21853871)
-
-**Interpretation**
-
-- Logistic Baseline Model: Performs well but is outperformed by the logistic second model, showing room for improvement in feature selection or tuning.
-
-- Logistic Second Model: The best-performing model, achieving the highest TPR and lowest FPR, indicating effective optimization for churn prediction.
-
-- Decision Tree Baseline Model: Provides moderate performance, but its ROC curve suggests it struggles with generalization compared to the logistic models.
-
-- Decision Tree Second Model: Shows slight improvement over the baseline decision tree, but still lags behind the logistic models in predictive power.
-
-**Final Model**
-
-The second logistic regression model emerged as the best-performing model across multiple evaluation metrics. It achieved the highest validation score, indicating robust overall performance. On the ROC curve, it demonstrated effective optimization for churn prediction, with the highest True Positive Rate (TPR) and lowest False Positive Rate (FPR). The confusion matrix highlighted its strength in correctly predicting churn with the highest number of true positives, although it also showed a tendency to overpredict with increased false positives. Additionally, the classification report emphasized its superior recall, reflecting the model's strong ability to identify churn cases accurately.
-
-Based on the analysis of the models, the second logistic regression model is the best choice for predicting customer churn at Syria Tel. While it has a slightly higher False Positive rate, its superior recall score indicates that it is more effective at identifying churners, which is the primary goal for this business problem. By capturing more churners (True Positives), the model offers a better chance to retain high-risk customers, which is more cost-effective than failing to identify churners and losing them to competitors.
-
-Although the higher False Positive rate poses a risk of misclassifying non-churn customers as churners, the financial cost of reaching out to false positives is generally lower than the cost of not addressing actual churners. This trade-off makes this model more suitable for improving customer retention, which is crucial for SyriaTel’s profitability and long-term growth. This final model achieves the stated objective by optimizing the most critical features influencing churn prediction​,such as account details, usage metrics, customer service interactions, and geographic information. Given its potential, it should be prioritized for further tuning to optimize its accuracy and enhance customer retention strategies.
 
 
 ## Conclusion
