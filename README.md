@@ -33,18 +33,7 @@ This dataset was obtained from [kaggle](https://www.kaggle.com/datasets/becksddf
 
 The cleaning of this dataset entailed dealing with outliers, dealing with duplicates, checking for missing values which the dataset didn't have, harmonizing the various data types and also operating both dummy encoding and label encoding in preparation of the data for modeling.
 
-## Data Visualization and Analysis Objectives
-
-1. To Identify Churn Rates by Region and which region is highly affected.
-  
-2. To examine the impact of Account Length on Churn. Which customers are highly prone to attrition.
-
-3. To assess the influence of subscription plans (voicemail and international plans) on churn.
-
-4. To evaluate the impact of customer service calls on churn and determine if there is a statistically significant relationship.
-
-5. To predict churn by focusing on the most influential features that drive customer behavior and retention patterns.
-   
+## Data Visualization and Analysis 
 
 Achieving these objectives involved training four distinct models: basic logistic regression and decision tree models, along with enhanced versions of both. The second models incorporated feature selection, addressed class imbalance using class weights, applied regularization (for logistic regression), and employed hyperparameter tuning (adjusting max depth, min samples, and entropy) for the decision tree models.
 
@@ -58,14 +47,10 @@ These models were analysed further using four different metrics entailing, cross
 
  ![image](https://github.com/user-attachments/assets/601589a3-4f7f-46f9-9986-74ce781b489b)
 
-
-
 - Based on validation score, the second logistic model presentred to have the highest score.
 - Based on ROC-Curve, the Logistic Second Model,emerged as the best-performing model, achieving the highest TPR and lowest FPR, indicating effective optimization for churn prediction.
 - Based on confusion matrix, the second logistic model recorded the highest number of true positives, outperforming others in correctly predicting churns. However, it also recorded more false positives, indicating a tendency to overpredict churn.
 - Based on Classification report the emphasis was on recall, which tells how well is our model's ability in predicting churn. In this case as well, The second logistic model presented to have the highest recall compared to the rest.
-
-
 
 ## Conclusion
 - The highly affected region for churn is 408, which has the leading churn rate
